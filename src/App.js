@@ -15,7 +15,8 @@ import './css/main.css';
 function App() {
 
   const [gridBlocks, setGridBlocks] = useState([0])
-  const [selectedGrid, setSelectedGrid] = useState(null)
+  const [selectedBlock, setSelectedBlock] = useState({})
+  // const [selectedGridColor, setSelectedGridColor] = useState(null)
 
   useEffect(() => {
     createGridArray()
@@ -37,7 +38,7 @@ function App() {
     
     setGridBlocks(gridBlocks)
     createBlocks(gridArray)
-    console.log(gridBlocks)
+    // console.log(gridBlocks)
   }
 
   let createBlocks = async(gridArray) => {
@@ -53,7 +54,9 @@ function App() {
 
 
   let gridSelected = (e) => {
-    setSelectedGrid(e.target.id)
+    setSelectedBlock({})
+    let selectedGrid = gridBlocks.filter(number => number.id == e.target.id);
+    setSelectedBlock(selectedGrid[0])
   }
 
 
@@ -62,7 +65,7 @@ function App() {
 
   return (
     <div className="container">
-      <div>{selectedGrid}</div>
+      <div>{selectedBlock.id}, {selectedBlock.color}</div>
       <div className="grid-container" 
         onClick={gridSelected}
       >
