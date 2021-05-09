@@ -14,8 +14,7 @@ import './css/main.css';
 
 function App() {
 
-
-  const [gridArray, setGridArray] = useState([0])
+  const [gridBlocks, setGridBlocks] = useState([0])
   const [selectedGrid, setSelectedGrid] = useState(null)
 
   useEffect(() => {
@@ -24,24 +23,26 @@ function App() {
 
   
 
-  let createGridArray = () => {
+  let createGridArray = async() => {
     let gridNumber = 1024
     let gridArray =  Array.from({length: gridNumber}, (v, i) => i);
 
-    let newGrid = [];
     gridArray.forEach(number => {
       let blockDetail = {
         id : number,
         color : ""
       }
-      newGrid.push(blockDetail)
+      gridBlocks.push(blockDetail)
     });
-    setGridArray(newGrid)
+    
+    setGridBlocks(gridBlocks)
     createBlocks(gridArray)
+    console.log(gridBlocks)
   }
 
   let createBlocks = async(gridArray) => {
     let container = document.querySelector(".grid-container")
+    container.innerHTML = ""
     await gridArray.forEach(number => {
       let block = document.createElement("div");
       block.setAttribute("id", number)
