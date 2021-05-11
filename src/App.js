@@ -1,7 +1,9 @@
 
 import {useEffect, useState} from 'react';
+import { HexColorPicker } from "react-colorful";
 // import styled from "styled-components";
 import './css/main.css';
+import './css/react-colorful.css';
 
 
 
@@ -16,6 +18,7 @@ function App() {
 
   const [gridBlocks, setGridBlocks] = useState([0])
   const [selectedBlock, setSelectedBlock] = useState({})
+  const [color, setColor] = useState("#aabbcc");
   // const [selectedGridColor, setSelectedGridColor] = useState(null)
 
   useEffect(() => {
@@ -25,7 +28,7 @@ function App() {
   
 
   let createGridArray = async() => {
-    let gridNumber = 1024
+    let gridNumber = 3136
     let gridArray =  Array.from({length: gridNumber}, (v, i) => i);
 
     gridArray.forEach(number => {
@@ -54,9 +57,40 @@ function App() {
 
 
   let gridSelected = (e) => {
-    setSelectedBlock({})
-    let selectedGrid = gridBlocks.filter(number => number.id == e.target.id);
-    setSelectedBlock(selectedGrid[0])
+
+    let activeBlock = e.target
+
+    if(!activeBlock.classList.contains("block")) 
+      return
+      
+      setSelectedBlock({})
+      let selectedGrid = gridBlocks.filter(number => number.id == activeBlock.id);
+      setSelectedBlock(selectedGrid[0])
+      selectedBlock.color = color
+      addColortoBlock(activeBlock)
+
+      updateColorBlocks()
+  }
+
+  let addColortoBlock = (activeBlock) => {
+    activeBlock.style.backgroundColor = color;
+  }
+
+  let updateColorBlocks = () => {
+    
+    let blockNumber = 16
+    let blockArray =  Array.from({length: blockNumber}, (v, i) => i);
+
+    let colorContainer = document.querySelector(".colorSettings")
+    colorContainer.innerHTML = ""
+
+    blockArray.forEach(number => {
+      let colorBlock = document.createElement("div");
+      colorBlock.setAttribute("id", number)
+      colorBlock.classList.add("color-block")
+      colorContainer.appendChild(colorBlock);  
+    });
+
   }
 
 
@@ -65,12 +99,24 @@ function App() {
 
   return (
     <div className="container">
-      <div>{selectedBlock.id}, {selectedBlock.color}</div>
-      <div className="grid-container" 
-        onClick={gridSelected}
-      >
 
-      </div>
+        <div className="leftPane">
+          <div className="grid-container" 
+            onClick={gridSelected}
+          >
+          </div>
+        </div>
+
+        <div className="rightPane">
+          <div className="colorPane">
+            <HexColorPicker color={color} onChange={setColor} />
+          </div>
+          <div className="colorSettings">
+
+          </div>
+          {/* <div>{selectedBlock.id}, {selectedBlock.color}</div> */}
+        </div>
+
     </div>
   );
 

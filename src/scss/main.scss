@@ -58,26 +58,55 @@ html {
 
 
 body {
-    background-color: hsl(44, 29%, 98%);
     margin: 0;
 }
 
-$blockColor: hsla(60, 11%, 95%, 1);
+$blockColor: #EFF5F1;
 
 
 
 .container {
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.5fr .5fr;
+    width: 100%;
     height: 100vh;
+    // max-width: 1920px;
+    margin: 0 auto;
+    background-color: #F9FBF9;
+
+    // height: 100vh;
+
+
+    .leftPane {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .rightPane {
+        background-color: #fff;    
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+
+        
+        .colorPane {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+
 
     .grid-container {
         display: grid;
-        grid-template-columns: repeat(32, auto);
-        grid-template-rows: repeat(32, auto);
+        grid-template-columns: repeat(56, auto);
+        grid-template-rows: repeat(56, auto);
         grid-gap: 1px;
+
 
         .block {
             width: 12px;
@@ -90,5 +119,6 @@ $blockColor: hsla(60, 11%, 95%, 1);
             }
         }
     }
+
 
 }
