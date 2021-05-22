@@ -77,7 +77,7 @@ body {
     height: 100vh;
     // max-width: 1920px;
     margin: 0 auto;
-    background-color: #F9FBF9;
+    background-color:#fff;
 
     // height: 100vh;
 
@@ -96,6 +96,7 @@ body {
         top: 100px;
         width:325px;
         border-radius: 16px;
+        box-shadow: 0px 6px 64px rgba(0, 0, 0, 0.10);
 
         // display: flex;
         // justify-content: center;
@@ -129,8 +130,6 @@ body {
                 align-items: center;
                 width: 100%;
                 position: relative;
-                padding: 12px;
-                border: 1px solid #E7E7E7;
                 border-radius: 12px;
 
 
@@ -138,7 +137,6 @@ body {
                     font-size: 12px;
                     font-weight: 300;
                     line-height: 1;
-                    color: #4B4B4B;
                     margin-right: 8px;
                 }
 
@@ -205,6 +203,8 @@ body {
   }
 
   .select select {
+    background: none;
+    color: #a8a8a8;
     -webkit-appearance: none;
     width: 100%;
     border: 0;

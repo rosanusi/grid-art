@@ -1,6 +1,7 @@
 
 import {useEffect, useState} from 'react';
 import { HslColorPicker } from "react-colorful";
+import convert from 'color-convert';
 import styled from "styled-components";
 import './css/main.css';
 import './css/react-colorful.css';
@@ -26,7 +27,7 @@ function App() {
   
 
   let setGridArray = async() => {
-    let gridNumber = 3136
+    let gridNumber = 1024
     let gridArray =  Array.from({length: gridNumber}, (v, i) => i);
 
     gridArray.forEach(number => {
@@ -121,6 +122,26 @@ function App() {
   }
 
 
+  let getSelectedColorBlock = (e) => {
+    
+    let bgColor = e.target.style.backgroundColor
+    let colorValue = bgColor.substring(4,bgColor.length-1);
+
+    let colorArray = colorValue.split(',');
+    let r = colorArray[0]
+    let g = colorArray[1]
+    let b = colorArray[2]
+    
+    let hslColorArray = convert.rgb.hsl(r, g, b);
+    let h = hslColorArray[0]
+    let s = hslColorArray[1]
+    let l = hslColorArray[2]
+
+    setColor({ h: h, s: s, l: l })
+
+  }
+
+
   return (
     <div className="container">
 
@@ -150,7 +171,7 @@ function App() {
               <span className="value">{colorRemixValue}%</span>
             </div>
           </div>
-          <ColorRemixBlocks className="colorRemixGrid" id="colorRemixGrid"/>
+          <ColorRemixBlocks className="colorRemixGrid" id="colorRemixGrid" onClick={getSelectedColorBlock}/>
           {/* <div className="selectedColors">
             <span className=""title>Selected Colors</span>
           </div> */}
@@ -168,14 +189,14 @@ export default App;
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(56, auto);
-  grid-template-rows: repeat(56, auto);
-  grid-gap: 1px;
+  grid-template-columns: repeat(32, auto);
+  grid-template-rows: repeat(32, auto);
+  grid-gap: 2px;
 
   .block {
-    width: 12px;
-    height: 12px;
-    background-color: hsl(206, 63%, 94%);
+    width: 24px;
+    height: 24px;
+    background-color: hsl(98, 0%, 97%);
     border-radius: 2px;
 
     &:hover {
@@ -195,14 +216,21 @@ const ColorRemixBlocks = styled.div`
   grid-template-columns: repeat(8, auto);
   {/* grid-template-rows: repeat(5, auto); */}
   position: relative;
+  box-sizing: border-box;
   grid-gap: 4px;
   margin-top: 16px;
   overflow: hidden;
 
   .color-block {
     background-color: #fff;
+    border: 4px solid rgba(0, 0, 0, 0);
     height: 28px;
     border-radius: 4px;
+    transition: all 150ms ease;
+    cursor: pointer;
 
+    &:hover {
+      border: 4px solid rgba(255, 255, 255, .8);
+    }
   }
 `;
