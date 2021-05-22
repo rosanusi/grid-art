@@ -52,6 +52,8 @@ table {
 }
 
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
 html {
     font-size: 16px;
 }
@@ -59,9 +61,11 @@ html {
 
 body {
     margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
 }
 
-$blockColor: #EFF5F1;
+
 
 
 
@@ -86,39 +90,149 @@ $blockColor: #EFF5F1;
 
 
     .rightPane {
-        background-color: #fff;    
+        background-color: #fff;
+        position: absolute;    
+        right: 200px;
+        top: 100px;
+        width:325px;
+        border-radius: 16px;
+
         // display: flex;
         // justify-content: center;
         // align-items: center;
 
         
         .colorPane {
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+
+            
         }
-    }
 
+        .colorRemix {
+            // display: flex;
+            // justify-content: space-around;
+            // align-items: center;
 
-
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(56, auto);
-        grid-template-rows: repeat(56, auto);
-        grid-gap: 1px;
-
-
-        .block {
-            width: 12px;
-            height: 12px;
-            background-color: $blockColor;
-            border-radius: 2px;
-
-            &:hover {
-                background-color: darken($blockColor, 5%);
+            .heading {
+                display: flex;
+                margin-bottom: 8px;
+                justify-content: space-between ;
+    
             }
-        }
-    }
 
+
+            .customSlider {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                position: relative;
+                padding: 12px;
+                border: 1px solid #E7E7E7;
+                border-radius: 12px;
+
+
+                label {
+                    font-size: 12px;
+                    font-weight: 300;
+                    line-height: 1;
+                    color: #4B4B4B;
+                    margin-right: 8px;
+                }
+
+                .slider {
+                    display: inline-flex;
+                    width: 100%;
+                    height: 1px;
+                    appearance: none;
+                    background: #CBCBCB;
+                    outline: none;
+                    opacity: 0.7;
+                    transition: opacity .2s;
+    
+                    &:hover {
+                        opacity: 1;
+                    }
+    
+                    &::-webkit-slider-thumb {
+                        appearance: none;
+                        width: 12px; 
+                        height: 12px; 
+                        background: #5C5C5C;
+                        border-radius : 32px;
+                        cursor: pointer;
+                    }
+                      
+                    &::-moz-range-thumb {
+                        width: 25px; /* Set a specific slider handle width */
+                        height: 25px; /* Slider handle height */
+                        background: #04AA6D; /* Green background */
+                        cursor: pointer; /* Cursor on hover */
+                    }
+                }
+
+                .value {
+                    max-width: calc(30% + 8px);
+                    margin-left: 8px;
+                }
+            }
+
+            .value {
+                color: #969696;
+                font-size: 12px;
+                font-weight: 300;
+                line-height: 1;
+            }
+
+        }
+
+    }
 
 }
+
+
+
+.select {
+    min-width: 30%;
+    position: relative;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1;
+    color: #4B4B4B;
+    margin-right: 8px;
+  }
+
+  .select select {
+    -webkit-appearance: none;
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 150ms ease;
+  }
+  .select select:required:invalid {
+    color: #5a667f;
+  }
+  .select select option {
+    color: #223254;
+  }
+  .select select option[value=""][disabled] {
+    display: none;
+  }
+  .select select:focus {
+    outline: none;
+    border-color: #07f;
+    box-shadow: 0 0 0 2px rgba(0,119,255,0.2);
+  }
+  .select select:hover + svg {
+    stroke: #07f;
+  }
+  .sprites {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    user-select: none;
+  }

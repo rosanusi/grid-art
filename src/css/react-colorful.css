@@ -4,22 +4,21 @@
 .rightPane .react-colorful {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 300px;
 }
 .rightPane .react-colorful__saturation {
   border-radius: 4px 4px 0 0;
 }
 .rightPane .react-colorful__alpha-gradient, .rightPane .react-colorful__saturation {
   box-shadow: none;
-  border-radius: 0;
+  border-radius: 8px;
 }
 .rightPane .react-colorful__hue {
-  height: 40px;
-  border-radius: 0 0 4px 4px;
+  height: 16px;
+  border-radius: 64px;
 }
 .rightPane .react-colorful__hue.react-colorful__last-control {
-  margin-top: 12px;
-  border-radius: 0;
+  margin: 12px 0 24px;
 }
 
 /*# sourceMappingURL=react-colorful.css.map */
