@@ -71,11 +71,10 @@ function App() {
 
 
   let setColorRemixBlocks = () => {
-    
-
     let number = 32
     let colorGrid =  Array.from({length: number}, (v, i) => i);
     let colorRemixGrid = document.querySelector(".colorRemixGrid")
+    
     colorRemixGrid.innerHTML = ""
 
     let value = colorRemixValue
@@ -96,29 +95,16 @@ function App() {
 
     });
 
-  
-
-
-
-    console.log(selectedColorTweak, color )
-
   }
 
   let setTweakType = (e) => {
-      let tweakType = e.target.value;
-      let slider = document.getElementById("rangeSlider")     
-
+      let tweakType = e.target.value;    
       setSelectedColorTweak(tweakType)
-
-      console.log(slider)
-
   }
 
   let setTweakValue = () => {
     let slider = document.getElementById("rangeSlider")
     setColorRemixValue(slider.value)
-    
-    console.log(colorRemixValue)
   }
 
 
@@ -213,8 +199,7 @@ const GridContainer = styled.div`
 const ColorRemixBlocks = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(8, auto);
-  {/* grid-template-rows: repeat(5, auto); */}
+  grid-template-columns: repeat(8, auto);  
   position: relative;
   box-sizing: border-box;
   grid-gap: 4px;
