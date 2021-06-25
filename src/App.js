@@ -14,6 +14,7 @@ function App() {
   const [selectedColorTweak, setSelectedColorTweak] = useState('lightness')
   const [colorRemixValue, setColorRemixValue] = useState(50)
   const [color, setColor] = useState({ h: 200, s: 39, l: 45 });
+  const [colorSelector, setColorSelector] = useState(false)
 
 
   useEffect(() => {
@@ -40,7 +41,6 @@ function App() {
       gridNumber = 1024;
     }
 
-    console.log(mediaQuery, gridNumber)
 
     let gridArray =  Array.from({length: gridNumber}, (v, i) => i);
 
@@ -141,6 +141,12 @@ function App() {
 
   }
 
+  let handleColorSelector = () => {
+    setColorSelector(prevColorSelector => !prevColorSelector)
+
+    console.log(colorSelector)
+
+  }
 
   return (
     <div className="container">
@@ -152,25 +158,30 @@ function App() {
         </div>
 
         <div className="rightPane">
-          <div className="colorPane">
-            <HslColorPicker color={color} onChange={ setColor } />
-          </div>
-          <div className="colorRemix">
-            <div className="customSlider">
-              <label className="select" htmlFor="saturation">
-              <select id="slct" required="required" onChange={setTweakType}>
-                <option value="saturation">Saturation</option>
-                <option value="lightness">Lightness</option>
-              </select>
-              </label>
-              <input type="range" id="rangeSlider" 
-                // defaultValue={colorRemixValue} 
-                className="slider" 
-                onChange={ setTweakValue } 
-              />
-              <span className="value">{colorRemixValue}%</span>
-            </div>
-          </div>
+          <span className="colorSelector-action" onClick={handleColorSelector}>Show Color selector</span>
+          {
+            colorSelector &&
+            <>
+              <div className="colorPane"><HslColorPicker color={color} onChange={ setColor } /></div>
+                <div className="colorRemix">
+                <div className="customSlider">
+                  <label className="select" htmlFor="saturation">
+                  <select id="slct" required="required" onChange={setTweakType}>
+                    <option value="saturation">Saturation</option>
+                    <option value="lightness">Lightness</option>
+                  </select>
+                  </label>
+                  <input type="range" id="rangeSlider" 
+                    // defaultValue={colorRemixValue} 
+                    className="slider" 
+                    onChange={ setTweakValue } 
+                  />
+                  <span className="value">{colorRemixValue}%</span>
+                </div>
+              </div>
+            </>
+          }
+
           <ColorRemixBlocks className="colorRemixGrid" id="colorRemixGrid" onClick={getSelectedColorBlock}/>
           {/* <div className="selectedColors">
             <span className=""title>Selected Colors</span>
@@ -228,7 +239,6 @@ const ColorRemixBlocks = styled.div`
   position: relative;
   box-sizing: border-box;
   grid-gap: 4px;
-  margin-top: 16px;
   overflow: hidden;
 
   .color-block {

@@ -135,6 +135,7 @@ body {
         }
 
         .colorRemix {
+            margin-bottom: 16px;
             // display: flex;
             // justify-content: space-around;
             // align-items: center;
@@ -277,4 +278,22 @@ body {
         // height: 56px !important;
     }
 
+  }
+
+
+  .colorSelector-action {
+    position: absolute;
+    display: none;
+    top: -40px;
+    right: 8px;
+    font-size: 14px;
+    background-color: #fff;
+    padding: 8px;
+    margin-bottom: 16px;
+    
+    border-radius: 32px;
+
+    @media only screen and (max-width : 500px) {
+        display: inline-block;    
+    }
   }
