@@ -76,10 +76,21 @@ body {
   margin: 0 auto;
   background-color: #fff;
 }
+@media only screen and (max-width: 500px) {
+  .container {
+    grid-template-columns: auto;
+    height: auto;
+  }
+}
 .container .leftPane {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media only screen and (max-width: 500px) {
+  .container .leftPane {
+    padding-top: 16px;
+  }
 }
 .container .rightPane {
   background-color: #fff;
@@ -93,12 +104,10 @@ body {
 @media only screen and (max-width: 500px) {
   .container .rightPane {
     position: fixed;
+    width: 100vw;
     bottom: 0;
-    left: 0;
     top: auto;
     right: auto;
-    width: 100%;
-    border-radius: 40px 40px 0 0;
   }
 }
 .container .rightPane .colorPane {
@@ -160,11 +169,6 @@ body {
   max-width: calc(30% + 8px);
   margin-left: 8px;
 }
-@media only screen and (max-width: 500px) {
-  .container .rightPane .colorRemix .customSlider .value {
-    font-size: 2rem;
-  }
-}
 .container .rightPane .colorRemix .value {
   color: #969696;
   font-size: 12px;
@@ -192,12 +196,6 @@ body {
   font-family: inherit;
   transition: all 150ms ease;
 }
-@media only screen and (max-width: 500px) {
-  .select select {
-    font-size: 2rem;
-  }
-}
-
 .select select:required:invalid {
   color: #5a667f;
 }
@@ -226,12 +224,6 @@ body {
   height: 0;
   pointer-events: none;
   user-select: none;
-}
-
-@media only screen and (max-width: 500px) {
-  .color-block {
-    height: 56px !important;
-  }
 }
 
 /*# sourceMappingURL=main.css.map */

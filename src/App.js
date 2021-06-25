@@ -27,7 +27,21 @@ function App() {
   
 
   let setGridArray = async() => {
-    let gridNumber = 1024
+
+    let gridNumber;
+
+    // Create a media condition that targets viewports at least 768px wide
+    let mediaQuery = window.matchMedia('(max-width: 500px)')
+    // Check if the media query is true
+    if (mediaQuery.matches) {
+      // Then trigger an alert
+      gridNumber = 256;
+    } else {
+      gridNumber = 1024;
+    }
+
+    console.log(mediaQuery, gridNumber)
+
     let gridArray =  Array.from({length: gridNumber}, (v, i) => i);
 
     gridArray.forEach(number => {
@@ -176,12 +190,23 @@ export default App;
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(32, auto);
-  grid-template-rows: repeat(32, auto);
+
   grid-gap: 2px;
+
+  @media only screen and (max-width: 500px) {
+     grid-template-columns: repeat(16, auto);
+
+  }  
 
   .block {
     width: 24px;
     height: 24px;
+
+    @media only screen and (max-width: 500px) {
+      width: 20px;
+      height: 20px;
+   }
+    
     background-color: hsl(98, 0%, 97%);
     border-radius: 2px;
 

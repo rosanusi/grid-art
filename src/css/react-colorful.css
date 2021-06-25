@@ -1,20 +1,9 @@
 .rightPane {
   padding: 24px;
 }
-@media only screen and (max-width: 500px) {
-  .rightPane {
-    padding: 32px;
-  }
-}
 .rightPane .react-colorful {
   position: relative;
   width: 100%;
-  height: 300px;
-}
-@media only screen and (max-width: 500px) {
-  .rightPane .react-colorful {
-    height: 448px;
-  }
 }
 .rightPane .react-colorful__saturation {
   border-radius: 4px 4px 0 0;
@@ -29,12 +18,6 @@
 }
 .rightPane .react-colorful__hue.react-colorful__last-control {
   margin: 12px 0 24px;
-}
-@media only screen and (max-width: 500px) {
-  .rightPane .react-colorful__hue.react-colorful__last-control {
-    margin: 24px 0 24px;
-    height: 24px;
-  }
 }
 
 /*# sourceMappingURL=react-colorful.css.map */
