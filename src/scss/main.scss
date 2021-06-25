@@ -102,6 +102,17 @@ body {
         // justify-content: center;
         // align-items: center;
 
+        @media only screen and (max-width : 500px) {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            top: auto;
+            right: auto;
+            width: 100%;
+            border-radius: 40px 40px 0 0;
+        }
+
+
         
         .colorPane {
             position: relative;
@@ -174,6 +185,10 @@ body {
                 .value {
                     max-width: calc(30% + 8px);
                     margin-left: 8px;
+
+                    @media only screen and (max-width : 500px) {
+                        font-size: 2rem;
+                    }
                 }
             }
 
@@ -211,7 +226,13 @@ body {
     cursor: pointer;
     font-family: inherit;
     transition: all 150ms ease;
+    
+    @media only screen and (max-width : 500px) {
+        font-size: 2rem;
+    }
+
   }
+
   .select select:required:invalid {
     color: #5a667f;
   }
@@ -235,4 +256,14 @@ body {
     height: 0;
     pointer-events: none;
     user-select: none;
+  }
+
+
+
+  .color-block {
+
+    @media only screen and (max-width : 500px) {
+        height: 56px !important;
+    }
+
   }
