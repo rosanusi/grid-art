@@ -81,6 +81,7 @@ function App() {
 
   let addColortoBlock = (activeBlock) => {
     activeBlock.style.backgroundColor = `hsl(${color.h},${color.s}%,${color.l}%)`;
+    activeBlock.style.border = "none";
   }
 
 
@@ -141,26 +142,21 @@ function App() {
 
   }
 
-  let handleColorSelector = () => {
-    setColorSelector(prevColorSelector => !prevColorSelector)
+  // let handleColorSelector = () => {
+  //   setColorSelector(prevColorSelector => !prevColorSelector)
 
-    console.log(colorSelector)
-
-  }
+  // }
 
   return (
-    <div className="container">
-
-        <div className="leftPane">
-          <GridContainer className="grid-container" defaultBlockColors={color}
-            onClick={selectedGrid}
-          / >
-        </div>
-
-        <div className="rightPane">
-          <span className="colorSelector-action" onClick={handleColorSelector}>Show Color selector</span>
+    <>
+      <div className="canvasWrap">
+        <div className="canvasAndControls">
+          <GridContainer className="grid-container" defaultBlockColors={color} onClick={selectedGrid}
+          />
+          <RightPane className="rightPane">
+          {/* <span className="colorSelector-action" onClick={handleColorSelector}>Show Color selector</span> */}
           {
-            colorSelector &&
+            // colorSelector &&
             <>
               <div className="colorPane"><HslColorPicker color={color} onChange={ setColor } /></div>
                 <div className="colorRemix">
@@ -188,9 +184,11 @@ function App() {
           </div> */}
 
           {/* <div>{selectedBlock.id}, {JSON.stringify(selectedBlock.color)}</div> */}
+        </RightPane>
         </div>
+      </div>
 
-    </div>
+    </>
   );
 
   
@@ -201,8 +199,7 @@ export default App;
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(32, auto);
-
-  grid-gap: 2px;
+  align-self: center;
 
   @media only screen and (max-width: 500px) {
      grid-template-columns: repeat(16, auto);
@@ -212,14 +209,17 @@ const GridContainer = styled.div`
   .block {
     width: 24px;
     height: 24px;
+    border: 1px solid #f1f1f1;
+    margin-left: -1px;
+    margin-top: -1px;
+
+
 
     @media only screen and (max-width: 500px) {
       width: 20px;
       height: 20px;
    }
     
-    background-color: hsl(98, 0%, 97%);
-    border-radius: 2px;
 
     &:hover {
       background-color: hsl(
@@ -227,30 +227,51 @@ const GridContainer = styled.div`
         ${props => props.defaultBlockColors.s}%, 
         ${props => props.defaultBlockColors.l}%
       );
+      border: none;
     }
   }
 
 `;
 
+const RightPane = styled.div`
+
+  position: relative;
+  padding: 0;
+  margin-left: 40px;
+  @media only screen and (max-width: 500px) {
+
+    background-color: #fff;
+    position: fixed;
+    align-self: flex-end;
+    top: -100px;
+    border-radius: 16px;
+    box-shadow: 0px 6px 64px rgb(0 0 0 / 10%);
+
+  } 
+
+  .colorRemixGrid {
+
+  }
+
+`;
+
+
 const ColorRemixBlocks = styled.div`
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(8, auto);  
+  grid-template-columns: repeat(4, auto);  
   position: relative;
   box-sizing: border-box;
-  grid-gap: 4px;
   overflow: hidden;
 
   .color-block {
     background-color: #fff;
-    border: 4px solid rgba(0, 0, 0, 0);
-    height: 28px;
-    border-radius: 4px;
+    height: 40px;
     transition: all 150ms ease;
     cursor: pointer;
 
     &:hover {
-      border: 4px solid rgba(255, 255, 255, .8);
+      transform: scale(1.5);
     }
   }
 `;

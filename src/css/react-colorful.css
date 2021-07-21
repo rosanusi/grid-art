@@ -5,16 +5,15 @@
   position: relative;
   width: 100%;
 }
-.rightPane .react-colorful__saturation {
-  border-radius: 4px 4px 0 0;
-}
 .rightPane .react-colorful__alpha-gradient, .rightPane .react-colorful__saturation {
   box-shadow: none;
-  border-radius: 8px;
+  border-radius: 0;
+}
+.rightPane .react-colorful__last-control {
+  border-radius: 0;
 }
 .rightPane .react-colorful__hue {
   height: 16px;
-  border-radius: 64px;
 }
 .rightPane .react-colorful__hue.react-colorful__last-control {
   margin: 12px 0 24px;
