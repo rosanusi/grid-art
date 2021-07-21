@@ -81,7 +81,10 @@ body {
         height: 100vh;
 
         @media only screen and (max-width : 500px) {
+            flex-flow: column;
             padding-top: 16px;
+            justify-content: flex-start;
+            margin-top: 48px;
         }
 
         .canvasAndControls {

@@ -172,7 +172,7 @@ function App() {
                     className="slider" 
                     onChange={ setTweakValue } 
                   />
-                  <span className="value">{colorRemixValue}%</span>
+                  {/* <span className="value">{colorRemixValue}%</span> */}
                 </div>
               </div>
             </>
@@ -238,12 +238,18 @@ const RightPane = styled.div`
   position: relative;
   padding: 0;
   margin-left: 40px;
-  @media only screen and (max-width: 500px) {
 
+
+  @media only screen and (max-width: 500px) {
+    width: 100vw;
     background-color: #fff;
     position: fixed;
+    padding: 24px;
+    margin-left: 0;
+    left: 0;
+
     align-self: flex-end;
-    top: -100px;
+    // top: -100px;
     border-radius: 16px;
     box-shadow: 0px 6px 64px rgb(0 0 0 / 10%);
 
@@ -264,14 +270,24 @@ const ColorRemixBlocks = styled.div`
   box-sizing: border-box;
   overflow: hidden;
 
+  @media only screen and (max-width: 500px) {
+    grid-template-columns: repeat(16, auto);  
+  }
+
   .color-block {
     background-color: #fff;
     height: 40px;
     transition: all 150ms ease;
     cursor: pointer;
 
+    @media only screen and (max-width: 500px) {
+      height : 24px;
+    }
+
     &:hover {
       transform: scale(1.5);
     }
   }
+
+
 `;
