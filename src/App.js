@@ -1,6 +1,7 @@
 
 import {useEffect, useState} from 'react';
 import { HslColorPicker } from "react-colorful";
+import ReactGA from 'react-ga';
 import convert from 'color-convert';
 import styled from "styled-components";
 import './css/main.css';
@@ -22,6 +23,8 @@ function App() {
   },[gridBlocks])
 
   useEffect(() => {
+    const trackingId = "G-VH68Y528TY"; // Replace with your Google Analytics tracking ID
+    ReactGA.initialize(trackingId);
     setColorRemixBlocks()
   },[color, selectedColorTweak, colorRemixValue])
   
