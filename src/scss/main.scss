@@ -52,7 +52,7 @@ table {
 }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 html {
     font-size: 16px;
@@ -62,8 +62,10 @@ html {
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
+    font-weight: 400;
     font-size: 1rem;
     background-color: #fff;
+    -webkit-font-smoothing: antialiased;
 }
 
 
@@ -76,6 +78,7 @@ body {
 
     .canvasWrap {
         display: flex;
+        flex-flow: column wrap;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -89,7 +92,10 @@ body {
 
         .canvasAndControls {
             display: flex;  
-            flex-flow: row nowrap;
+            flex-flow: row wrap;
+            position: relative;
+            max-width: 1200px;
+
         }
 
     }
@@ -122,17 +128,6 @@ body {
         }
 
         .colorRemix {
-            margin-bottom: 16px;
-            // display: flex;
-            // justify-content: space-around;
-            // align-items: center;
-
-            .heading {
-                display: flex;
-                margin-bottom: 8px;
-                justify-content: space-between ;
-    
-            }
 
 
             .customSlider {
@@ -140,25 +135,20 @@ body {
                 align-items: center;
                 width: 100%;
                 position: relative;
-                border-radius: 12px;
+                padding: 4px 0;
+                // border-radius: 12px;
 
-
-                label {
-                    font-size: 12px;
-                    font-weight: 300;
-                    line-height: 1;
-                    margin-right: 8px;
-                }
 
                 .slider {
                     display: inline-flex;
                     width: 100%;
-                    height: 1px;
+                    height: 4px;
+                    -webkit-appearance: none;
                     appearance: none;
-                    background: #CBCBCB;
+                    background: #dadada;
                     outline: none;
                     opacity: 0.7;
-                    transition: opacity .2s;
+                    transition: opacity 0.2s;
     
                     &:hover {
                         opacity: 1;
