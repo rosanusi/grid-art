@@ -95,7 +95,6 @@ function App() {
       activeBlock.style.backgroundColor = selectedColor;
       activeBlock.style.border = "none";
 
-      console.log(selectedColor)
       addColortoPallete(selectedColor)
   }
 
@@ -162,8 +161,6 @@ let addColortoPallete = (selectedColor) => {
   }
 
   const setTweakType = (e) => {
-      console.log(e.target)
-      
       let container = document.querySelector('.label-block');
       let activeSelection = container.querySelector('.active');
 
@@ -181,6 +178,19 @@ let addColortoPallete = (selectedColor) => {
   }
 
 
+
+
+  // const setColorFromPalette = (e, color) => {
+    
+  //   console.log(e.target)
+  //   console.log(color)
+  //   console.log("this is how color works")
+
+  // }
+
+
+
+  // Get selected color from selection(RGB), turn them to (HSL) and set as color
   const getSelectedColorBlock = (e) => {
     
     let bgColor = e.target.style.backgroundColor
@@ -201,6 +211,8 @@ let addColortoPallete = (selectedColor) => {
   }
 
 
+
+
   const ColorPaletteList = () => {
     return (
       <>
@@ -209,7 +221,9 @@ let addColortoPallete = (selectedColor) => {
             key={index}
             className="palette-block"
             style={{backgroundColor: color}}
+            onClick={(e) => getSelectedColorBlock(e)}
           >
+            <span>{color}</span>
           </div>
         ))}
       </>
@@ -329,8 +343,29 @@ max-width: 736px;
 margin-top: 24px;
 
   .palette-block {
-    width: 50px;
-    height: 50px;
+    position:relative;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: all 250ms ease;
+
+    span {
+      position: absolute;
+      left: 0;
+      bottom: -24px;
+      opacity: 0;
+      font-size: 10px;
+      color: #7a7a7a;
+      text-transform: uppercase;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+
+      span {
+        opacity: 1;
+      }
+    }
   }
 
 
